@@ -20,28 +20,100 @@ Max::~Max()
 
 void Max::init(const BotInitialData &initialData, BotAttributes &attrib)
 {
+	m_updateCount = 0;
+	m_lastEnemyUpdateCount = -1;
+	m_enemyScanCount = 0;
 	m_initialData = initialData;
-	attrib.health=1.0;
-	attrib.motor=1.0;
-	attrib.weaponSpeed=1.0;
-	attrib.weaponStrength=1.0;
-	//dir.set(m_rand.norm()*2.0 - 1.0, m_rand.norm()*2.0 - 1.0);
-	dir.set(1, 0);
+	attrib.health=1;
+	attrib.motor=1;
+	attrib.weaponSpeed=0.2;
+	attrib.weaponStrength=1;
+	
+	m_ourLastPos.set(1, 0);
+	m_moveTarget.set(m_rand() % (m_initialData.mapData.width - 2) + 1.5, m_rand() % (m_initialData.mapData.width - 2) + 1.5);
+	m_scanAngle = 0;
 }
 
 void Max::update(const BotInput &input, BotOutput27 &output)
 {
-	output.moveDirection = dir;
-	//output.moveDirection.set(1, 0);
-	//output.moveDirection.set(m_rand.norm()*2.0-1.0, m_rand.norm()*2.0-1.0);
+	bool eSpotted = false;
+
+	if (m_updateCount == 0)
+	{
+		output.lines.clear();
+		output.text.clear();
+	}
+
+	//Check Scan
+	if (input.scanResult.size() > 0)
+	{
+		for (int i = 0; i < input.scanResult.size(); ++i)
+		{
+			if (input.scanResult[i].type == VisibleThing::e_robot)
+			{
+				m_lastEnemyPos = m_currentEnemyPos;
+				m_currentEnemyPos = input.scanResult[i].position;
+				m_calculatedVelocity = m_currentEnemyPos - m_lastEnemyPos;
+				eSpotted = true;
+				++m_enemyScanCount;
+
+				break;
+			}
+		}
+	}
+
+	//Movement
+	output.moveDirection = m_moveTarget - input.position;
+	if (output.moveDirection.length() < 1)
+	{
+		m_moveTarget.set(m_rand() % (m_initialData.mapData.width - 2) + 1.5, m_rand() % (m_initialData.mapData.width - 2) + 1.5);
+	}
 	output.motor = 1.0;
-	output.lookDirection.set(0,1);
-	output.action = BotOutput::scan;
-	//output.spriteFrame = (output.spriteFrame+1)%2;
-	output.text.clear();
-	char buf[100];
-	sprintf(buf, "%d", input.health);
-	output.text.push_back(TextMsg(buf, input.position - kf::Vector2(0.0f, 1.0f), 0.0f, 0.7f, 1.0f,80));
+
+	if (eSpotted)
+	{
+		kf::Vector2 estimatedEnemyPosition;
+		if (m_lastEnemyUpdateCount > -1)
+		{
+			kf::Vector2 delta = m_currentEnemyPos - m_lastEnemyPos;
+			estimatedEnemyPosition = m_currentEnemyPos + (delta / (m_updateCount - m_lastEnemyUpdateCount)) * 4;
+			estimatedEnemyPosition = TargetPrediction(estimatedEnemyPosition, input.position, m_calculatedVelocity, input.bulletSpeed);
+			Line lp;
+			Line la;
+			lp.start = m_currentEnemyPos;
+			la.start = m_lastEnemyPos;
+			lp.end = estimatedEnemyPosition;
+			la.end = m_currentEnemyPos;
+			lp.r = 1;
+			la.r = 0;
+			lp.g = 1;
+			la.g = 1;
+			lp.b = 1;
+			la.b = 0;
+			output.lines.push_back(lp);
+			output.lines.push_back(la);
+		}
+		// Shooting
+		if (m_enemyScanCount >= 3)
+		{
+			output.lookDirection = estimatedEnemyPosition;
+			output.moveDirection = output.lookDirection;
+			m_moveTarget = estimatedEnemyPosition;
+			m_enemyScanCount = 0;
+			output.action = BotOutput::shoot;
+		}
+
+		m_scanAngle -= m_initialData.scanFOV * 3;
+
+		m_lastEnemyUpdateCount = m_updateCount;
+	}
+	else
+	{
+		// Scanning
+		Scan(output);
+	}
+
+	m_updateCount++;
 }
 
 void Max::result(bool won)
@@ -51,4 +123,50 @@ void Max::result(bool won)
 void Max::bulletResult(bool hit)
 {
 
+}
+
+kf::Vector2 Max::TargetPrediction(kf::Vector2 enemyPos, kf::Vector2 myPos, kf::Vector2 enemyVelocity, float bulletSpeed)
+{
+	// Given: ux, uy, vmag (projectile speed), Ax, Ay, Bx, By
+
+	// Find the vector AB
+	kf::Vector2 AB = enemyPos - myPos;
+
+		// Normalize it
+		AB.normalise();
+
+		// Project u onto AB
+		float uDotAB = enemyVelocity.dot(AB);
+		float ujx = uDotAB * AB.x;
+		float ujy = uDotAB * AB.y;
+
+		// Subtract uj from u to get ui
+		float uix = enemyVelocity.x - ujx;
+		float uiy = enemyVelocity.y - ujy;
+
+		// Set vi to ui (for clarity)
+		float vix = uix;
+		float viy = uiy;
+
+		// Calculate the magnitude of vj
+		float viMag = sqrt(vix * vix + viy * viy);
+		float vjMag = sqrt(bulletSpeed * bulletSpeed - viMag * viMag);
+
+		// Get vj by multiplying it's magnitude with the unit vector AB
+		float vjx = AB.x * vjMag;
+		float vjy = AB.y * vjMag;
+
+		// Add vj and vi to get v
+		kf::Vector2 v;
+		v.x = vjx + vix;
+		v.y = vjy + viy;
+
+		return v;
+}
+
+void Max::Scan(BotOutput27 &output)
+{
+	m_scanAngle += m_initialData.scanFOV * 2;
+	output.lookDirection.set(cos(m_scanAngle), sin(m_scanAngle));
+	output.action = BotOutput::scan;
 }

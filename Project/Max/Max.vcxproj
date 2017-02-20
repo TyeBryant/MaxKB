@@ -17,7 +17,7 @@
     <ClInclude Include="bot.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3DFA53DF-7DE3-4714-B4E8-1A42F8E0F186}</ProjectGuid>
+    <ProjectGuid>{667675EB-E462-4213-B0A3-5117F6F7A2D3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>KillbotsCore</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
