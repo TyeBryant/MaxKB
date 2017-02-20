@@ -1,0 +1,6 @@
+<game bot_radius="0.35" vision="20.0">
+	<health min="200.0" max="1000.0"/>
+	<motor force="400.0" max_velocity="8.0f"/>
+	<weapon_speed min="20.0" max="100.0"/>
+	<weapon_damage min="1" max="100"/>
+</game>

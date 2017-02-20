@@ -1,0 +1,11 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  bot.cpp
+c:\users\tyebr\desktop\killbots_student_2.8.0\projects\max\bot.cpp(14): warning C4311: 'type cast': pointer truncation from 'Max *const ' to 'int'
+c:\users\tyebr\desktop\killbots_student_2.8.0\projects\max\bot.cpp(14): warning C4302: 'type cast': truncation from 'Max *const ' to 'int'
+c:\users\tyebr\desktop\killbots_student_2.8.0\projects\max\bot.cpp(14): warning C4244: 'argument': conversion from 'time_t' to 'kf::u32', possible loss of data
+c:\users\tyebr\desktop\killbots_student_2.8.0\projects\max\bot.cpp(29): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\tyebr\desktop\killbots_student_2.8.0\projects\max\bot.cpp(33): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\tyebr\desktop\killbots_student_2.8.0\projects\max\bot.cpp(69): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\tyebr\desktop\killbots_student_2.8.0\projects\max\bot.cpp(79): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+  Max.vcxproj -> C:\Users\tyebr\Desktop\killbots_student_2.8.0\bin\data\bots\Max\Max_d.dll
+  Max.vcxproj -> C:\Users\tyebr\Desktop\killbots_student_2.8.0\bin\data\bots\Max\Max_d.pdb (Full PDB)

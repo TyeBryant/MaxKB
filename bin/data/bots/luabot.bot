@@ -1,0 +1,4 @@
+<bot name="LuaBot" debug="luabot/luabot_d.dll" release="luabot/luabot.dll" threadSafe="true">
+	<sprite file="luabot/luabot.png" x="0" y="0" w="115" h="115"/>
+	<properties script="data/bots/luabot/bot.lua"/>
+</bot>

@@ -1,0 +1,4 @@
+<bot name="ManualBot" debug="manualbot/manualbot_d.dll" release="manualbot/manualbot.dll" threadSafe="true">
+	<sprite file="manualbot/ship2.png" x="0" y="0" w="38" h="54" face="look" />
+	<sound shot="data/bots/sound/wheee.wav" hurt="data/bots/sound/alienHit.wav" dead="data/bots/sound/alienHit.wav" />
+</bot>

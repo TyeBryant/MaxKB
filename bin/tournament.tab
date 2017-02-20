@@ -1,0 +1,61 @@
+return {
+-- Table: {1}
+{
+   ["Blank27"]={2},
+   ["ManualBot"]={3},
+   ["Bottymcbotface"]={4},
+   ["LuaBot"]={5},
+},
+-- Table: {2}
+{
+   ["Max"]={6},
+   ["ManualBot"]={7},
+   ["Bottymcbotface"]={8},
+   ["LuaBot"]={9},
+},
+-- Table: {3}
+{
+   ["Max"]={10},
+},
+-- Table: {4}
+{
+   ["Max"]={11},
+   ["ManualBot"]={12},
+   ["LuaBot"]={13},
+},
+-- Table: {5}
+{
+   ["Max"]={14},
+   ["ManualBot"]={15},
+},
+-- Table: {6}
+{
+},
+-- Table: {7}
+{
+},
+-- Table: {8}
+{
+},
+-- Table: {9}
+{
+},
+-- Table: {10}
+{
+},
+-- Table: {11}
+{
+},
+-- Table: {12}
+{
+},
+-- Table: {13}
+{
+},
+-- Table: {14}
+{
+},
+-- Table: {15}
+{
+},
+}

@@ -1,0 +1,5 @@
+<bot name="Blank27" debug="blank27/blank27_d.dll" release="blank27/blank27.dll" threadSafe="true">
+  <sprite file="blank27/ship1.png" x="0" y="0" w="42" h="54" angleOffset="0" face="move"/>
+  <bulletsprite file="sprites/bullet.png" x="0" y="0" w="16" h="16"/>
+  <sound shot="data/bots/sound/playerShoot.wav" hurt="data/bots/sound/alienHit.wav" dead="data/bots/sound/alienHit.wav" />
+</bot>

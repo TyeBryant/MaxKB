@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "manualbot", "projects\manualbot\manualbot.vcxproj", "{E12464E2-3BFB-4A17-9DEB-A004CC070223}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luabot", "projects\luabot\luabot.vcxproj", "{D0F5A29F-64E4-4542-9592-822627724076}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bots", "bots", "{72534CB8-F183-455E-ABEA-969A5D349AA9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "blank27", "projects\blank27\blank27.vcxproj", "{3DFA53DF-7DE3-4714-B4E8-1A42F8E0F186}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Max", "projects\Max\Max.vcxproj", "{667675EB-E462-4213-B0A3-5117F6F7A2D3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bottymcbotface", "projects\bottymcbotface\bottymcbotface.vcxproj", "{1F20CA50-EFCF-4C94-9474-E6DCA7C64678}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E12464E2-3BFB-4A17-9DEB-A004CC070223}.Debug|x64.ActiveCfg = Debug|x64
+		{E12464E2-3BFB-4A17-9DEB-A004CC070223}.Debug|x64.Build.0 = Debug|x64
+		{E12464E2-3BFB-4A17-9DEB-A004CC070223}.Release|x64.ActiveCfg = Release|x64
+		{E12464E2-3BFB-4A17-9DEB-A004CC070223}.Release|x64.Build.0 = Release|x64
+		{D0F5A29F-64E4-4542-9592-822627724076}.Debug|x64.ActiveCfg = Debug|x64
+		{D0F5A29F-64E4-4542-9592-822627724076}.Debug|x64.Build.0 = Debug|x64
+		{D0F5A29F-64E4-4542-9592-822627724076}.Release|x64.ActiveCfg = Release|x64
+		{D0F5A29F-64E4-4542-9592-822627724076}.Release|x64.Build.0 = Release|x64
+		{3DFA53DF-7DE3-4714-B4E8-1A42F8E0F186}.Debug|x64.ActiveCfg = Debug|x64
+		{3DFA53DF-7DE3-4714-B4E8-1A42F8E0F186}.Debug|x64.Build.0 = Debug|x64
+		{3DFA53DF-7DE3-4714-B4E8-1A42F8E0F186}.Release|x64.ActiveCfg = Release|x64
+		{3DFA53DF-7DE3-4714-B4E8-1A42F8E0F186}.Release|x64.Build.0 = Release|x64
+		{667675EB-E462-4213-B0A3-5117F6F7A2D3}.Debug|x64.ActiveCfg = Debug|x64
+		{667675EB-E462-4213-B0A3-5117F6F7A2D3}.Debug|x64.Build.0 = Debug|x64
+		{667675EB-E462-4213-B0A3-5117F6F7A2D3}.Release|x64.ActiveCfg = Release|x64
+		{667675EB-E462-4213-B0A3-5117F6F7A2D3}.Release|x64.Build.0 = Release|x64
+		{1F20CA50-EFCF-4C94-9474-E6DCA7C64678}.Debug|x64.ActiveCfg = Debug|x64
+		{1F20CA50-EFCF-4C94-9474-E6DCA7C64678}.Debug|x64.Build.0 = Debug|x64
+		{1F20CA50-EFCF-4C94-9474-E6DCA7C64678}.Release|x64.ActiveCfg = Release|x64
+		{1F20CA50-EFCF-4C94-9474-E6DCA7C64678}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E12464E2-3BFB-4A17-9DEB-A004CC070223} = {72534CB8-F183-455E-ABEA-969A5D349AA9}
+		{D0F5A29F-64E4-4542-9592-822627724076} = {72534CB8-F183-455E-ABEA-969A5D349AA9}
+		{3DFA53DF-7DE3-4714-B4E8-1A42F8E0F186} = {72534CB8-F183-455E-ABEA-969A5D349AA9}
+		{667675EB-E462-4213-B0A3-5117F6F7A2D3} = {72534CB8-F183-455E-ABEA-969A5D349AA9}
+		{1F20CA50-EFCF-4C94-9474-E6DCA7C64678} = {72534CB8-F183-455E-ABEA-969A5D349AA9}
+	EndGlobalSection
+EndGlobal
